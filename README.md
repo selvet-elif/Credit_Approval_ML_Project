@@ -50,6 +50,9 @@ Evaluated three models using **weighted F1-score** (due to imbalance):
 | **no_record**| 0.87      | 0.88   | 0.88     |
 | **Accuracy** |           |        | **0.89** |
 
+## KAGGLE 
+## https://www.kaggle.com/code/selvetelifdemirel/credit-approval-ml-project
+
 ### Key Insights:
 - **Top Predictive Features**: `TotalIncome`, `Age`, `WorkingYears`.
 - **Confusion Matrix**: High accuracy in identifying `good` clients, with moderate performance for `bad` cases.
