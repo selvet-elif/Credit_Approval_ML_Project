@@ -1,8 +1,8 @@
 # GlobalAIHub_ML_Project
-# Credit Card Approval Prediction – Machine Learning Project
+# Credit Approval Prediction – Machine Learning Project
 
 ## 📌 Overview
-This project predicts whether a credit card application should be **approved** ("good") or **rejected** ("bad"/"no_record") based on applicants' demographic, financial, and credit history data. The goal is to mitigate risk by identifying high-risk clients early.
+This project predicts whether a credit application should be **approved** ("good") or **rejected** ("bad"/"no_record") based on applicants' demographic, financial, and credit history data. The goal is to mitigate risk by identifying high-risk clients early.
 
 ---
 
