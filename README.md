@@ -27,10 +27,10 @@ Two datasets were merged using the `ID` column:
 - **Feature Engineering**:
   - Transformed `DAYS_BIRTH` → `Age` (years) and `DAYS_EMPLOYED` → `WorkingYears`.
   - Categorized credit `STATUS` into `Good_Debt` (timely payments) and `Bad_Debt` (delays).
-- **Class Imbalance**: Created 3 target classes: `good`, `bad`, `no_record`.
+- **Class Imbalance**: Created 3 target classes: `good`, `bad`.
 
 ### 2. Addressing Class Imbalance
-Used **SMOTE** to oversample minority classes (`bad`, `no_record`), ensuring balanced training data.
+Used **SMOTE** to oversample minority classes (`bad`), ensuring balanced training data.
 
 ### 3. Model Selection
 Evaluated three models using **weighted F1-score** (due to imbalance):
@@ -47,7 +47,6 @@ Evaluated three models using **weighted F1-score** (due to imbalance):
 |--------------|-----------|--------|----------|
 | **good**     | 0.92      | 0.95   | 0.93     |
 | **bad**      | 0.89      | 0.82   | 0.85     |
-| **no_record**| 0.87      | 0.88   | 0.88     |
 | **Accuracy** |           |        | **0.89** |
 
 ## KAGGLE 
