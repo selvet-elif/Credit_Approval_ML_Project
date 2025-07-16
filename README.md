@@ -1,64 +1,112 @@
-# GlobalAIHub_ML_Project
-# Credit Approval Prediction – Machine Learning Project
+# Credit Card Approval ML Project
 
-## 📌 Overview
-This project predicts whether a credit application should be **approved** ("good") or **rejected** ("bad"/"no_record") based on applicants' demographic, financial, and credit history data. The goal is to mitigate risk by identifying high-risk clients early.
+This repository hosts a Jupyter Notebook (`credit-approval-ml-project.ipynb`) that predicts credit card application approvals using machine learning.
+### Kaggle: https://www.kaggle.com/code/selvetelifdemirel/credit-approval-ml-project
+## 📋 Table of Contents
 
----
+- [🔍 Project Description](#project-description)
+- [📂 Dataset](#dataset)
+- [⚙️ Prerequisites](#prerequisites)
+- [🚀 Installation](#installation)
+- [▶️ Usage](#usage)
+- [📝 Notebook Structure](#notebook-structure)
+- [📊 Results Summary](#results-summary)
+- [🤝 Contributing](#contributing)
+
+## 🔍 Project Description
+
+This project classifies credit card applications as **"good"** or **"bad"** based on applicant information and credit history. It covers:
+
+- **Data Preprocessing**: Handling missing values and feature engineering (e.g., Age, WorkingYears).
+- **Imbalanced Data Handling**: Balancing classes using SMOTE.
+- **Modeling**: Training a baseline Random Forest classifier.
+- **Hyperparameter Optimization**: Tuning model parameters with Optuna.
+- **Evaluation**: Measuring performance using Accuracy, Precision, Recall, and F1-score.
 
 ## 📂 Dataset
-Two datasets were merged using the `ID` column:
-1. **`application_record.csv`**: Demographic/socio-economic features (e.g., income, education, employment status).
-2. **`credit_record.csv`**: Monthly credit history (e.g., payment delays, loan status).
 
-### Key Features:
-| Category              | Examples                          |
-|-----------------------|-----------------------------------|
-| **Demographics**      | Age, Gender, Marital Status      |
-| **Financials**        | Income, Property/Car Ownership   |
-| **Credit History**    | Payment Status (`Good_Debt`, `Bad_Debt`) |
+The dataset consists of two CSV files, which should be merged on the applicant ID:
 
----
+1. **`application_record.csv`**
+   - Demographic and socio-economic features (e.g., CODE_GENDER, AMT_INCOME_TOTAL, NAME_EDUCATION_TYPE).
+2. **`credit_record.csv`**
+   - Monthly repayment status (MONTHS_BALANCE) and payment status codes.
 
-## 🛠️ Methodology
+## ⚙️ Prerequisites
 
-### 1. Data Preprocessing
-- **Handling Missing Values**: Dropped rows with null `Occupation` values.
-- **Feature Engineering**:
-  - Transformed `DAYS_BIRTH` → `Age` (years) and `DAYS_EMPLOYED` → `WorkingYears`.
-  - Categorized credit `STATUS` into `Good_Debt` (timely payments) and `Bad_Debt` (delays).
-- **Class Imbalance**: Created 3 target classes: `good`, `bad`.
+- Python 3.7+
+- Jupyter Notebook or JupyterLab
+- Required Python libraries:
+  - pandas
+  - numpy
+  - scikit-learn
+  - imbalanced-learn
+  - matplotlib
+  - seaborn
+  - optuna
 
-### 2. Addressing Class Imbalance
-Used **SMOTE** to oversample minority classes (`bad`), ensuring balanced training data.
+## 🚀 Installation
 
-### 3. Model Selection
-Evaluated three models using **weighted F1-score** (due to imbalance):
-1. **Logistic Regression**
-2. **K-Nearest Neighbors (KNN)**
-3. **Random Forest (Best Performance)**  
-   - Optimized hyperparameters with **Optuna** (`n_estimators=171`, `max_depth=30`).
-
----
-
-## 📊 Results
-### Random Forest Performance:
-| Metric       | Precision | Recall | F1-Score |
-|--------------|-----------|--------|----------|
-| **good**     | 0.92      | 0.95   | 0.93     |
-| **bad**      | 0.89      | 0.82   | 0.85     |
-| **Accuracy** |           |        | **0.89** |
-
-## KAGGLE 
-## https://www.kaggle.com/code/selvetelifdemirel/credit-approval-ml-project
-
-### Key Insights:
-- **Top Predictive Features**: `TotalIncome`, `Age`, `WorkingYears`.
-- **Confusion Matrix**: High accuracy in identifying `good` clients, with moderate performance for `bad` cases.
-
----
-
-## 🚀 How to Reproduce
-1. **Install Dependencies**:
+1. Clone the repository:
    ```bash
-   pip install pandas numpy scikit-learn imbalanced-learn optuna seaborn matplotlib
+   git clone https://github.com/<username>/credit-approval-ml-project.git
+   ```
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## ▶️ Usage
+
+1. Launch Jupyter Notebook:
+   ```bash
+   jupyter notebook
+   ```
+2. Open `credit-approval-ml-project.ipynb`.
+3. Execute cells in order to follow data preprocessing, model training, and evaluation.
+
+## 📝 Notebook Structure
+
+1. **Data Preprocessing**
+   - Load and merge CSV files
+   - Analyze and clean missing values
+   - Feature engineering (Age, WorkingYears)
+2. **Imbalanced Data Handling**
+   - Encode categorical variables
+   - Apply SMOTE for oversampling
+3. **Modeling**
+   - Split data into training and testing sets
+   - Train a baseline Random Forest model
+   - Optimize hyperparameters with Optuna
+4. **Evaluation**
+   - Compare models and report performance metrics
+
+## 📊 Results Summary
+
+Below is the performance table for the Random Forest model optimized with Optuna:
+
+|               | precision | recall | f1-score | support |
+|---------------|-----------|--------|----------|---------|
+| **0**         | 0.97      | 0.98   | 0.98     | 85286   |
+| **1**         | 0.98      | 0.97   | 0.98     | 85110   |
+| **accuracy**  |           |        | **0.98** | 170396  |
+| **macro avg** | 0.98      | 0.98   | 0.98     | 170396  |
+| **weighted avg** | 0.98   | 0.98   | 0.98     | 170396  |
+
+
+## 🤝 Contributing
+
+1. Fork this repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add some feature"
+   ```
+4. Push to your branch:
+   ```bash
+   git push origin feature/your-feature
+   ```
+5. Open a Pull Request.
